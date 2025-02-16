@@ -10,6 +10,7 @@ import Appointment from "./pages/Appointment";
 import AppLayout from "./components/AppLayout";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
+import CalendarPage from "./pages/Calendar";
 
 const queryClient = new QueryClient();
 
@@ -27,12 +28,9 @@ const App = () => (
               path="/health-tracking"
               element={<div>Health Tracking</div>}
             />
-            <Route
-              path="/appointments"
-              element={<div>Appointments List</div>}
-            />
             <Route path="/wellness" element={<div>Wellness Tips</div>} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/calendar" element={<CalendarPage />} />
           </Route>
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />

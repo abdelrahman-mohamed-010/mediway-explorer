@@ -7,7 +7,6 @@ import {
   X,
   Heart,
   Home,
-  Stethoscope,
   User,
 } from "lucide-react";
 import { Button } from "./ui/button";
@@ -27,10 +26,9 @@ const AppLayout = () => {
   };
 
   const menuItems = [
-    { icon: Home, label: "Home", path: "/" },
+    { icon: Home, label: "Home", path: "/appointment" },
     { icon: Activity, label: "Health Tracking", path: "/health-tracking" },
-    { icon: Stethoscope, label: "Find Doctors", path: "/appointment" },
-    { icon: Calendar, label: "Appointments", path: "/appointments" },
+    { icon: Calendar, label: "Calendar", path: "/calendar" },
     { icon: Heart, label: "Wellness Tips", path: "/wellness" },
     { icon: User, label: "Profile", path: "/profile" },
   ];
@@ -55,17 +53,26 @@ const AppLayout = () => {
             <X className="h-6 w-6" />
           </Button>
         </div>
-        <nav className="p-4 space-y-2">
-          {menuItems.map((item) => (
-            <Link
-              key={item.label}
-              to={item.path}
-              className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
-            >
-              <item.icon className="h-5 w-5" />
-              <span>{item.label}</span>
-            </Link>
-          ))}
+        <nav className="p-4 space-y-1">
+          {menuItems.map((item) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <Link
+                key={item.label}
+                to={item.path}
+                className={cn(
+                  "flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-lg transition-colors",
+                  "hover:bg-gray-100 hover:text-primary",
+                  isActive ? "bg-primary/10 text-primary" : "text-gray-600"
+                )}
+              >
+                <item.icon
+                  className={cn("h-5 w-5", isActive && "text-primary")}
+                />
+                <span>{item.label}</span>
+              </Link>
+            );
+          })}
         </nav>
       </div>
 

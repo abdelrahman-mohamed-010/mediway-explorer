@@ -60,7 +60,7 @@ const Profile = () => {
   );
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className=" mx-auto">
       <Card className="p-6">
         <div className="flex flex-col md:flex-row gap-8">
           {/* Profile Image */}
