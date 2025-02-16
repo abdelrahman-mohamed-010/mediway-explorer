@@ -1,23 +1,30 @@
-
 import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import {
   Activity,
   Calendar,
-  ChartLine,
   Menu,
-  Settings,
-  User,
   X,
   Heart,
   Home,
   Stethoscope,
+  User,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 
 const AppLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const location = useLocation();
+
+  const getPageTitle = (path: string) => {
+    if (path === "/") return "Home";
+    return path
+      .slice(1)
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
 
   const menuItems = [
     { icon: Home, label: "Home", path: "/" },
@@ -25,6 +32,7 @@ const AppLayout = () => {
     { icon: Stethoscope, label: "Find Doctors", path: "/appointment" },
     { icon: Calendar, label: "Appointments", path: "/appointments" },
     { icon: Heart, label: "Wellness Tips", path: "/wellness" },
+    { icon: User, label: "Profile", path: "/profile" },
   ];
 
   return (
@@ -59,16 +67,6 @@ const AppLayout = () => {
             </Link>
           ))}
         </nav>
-        <div className="absolute bottom-0 left-0 right-0 p-4 border-t">
-          <div className="flex flex-col space-y-2">
-            <Link to="/sign-in" className="text-sm text-gray-600 hover:text-primary">
-              Sign In
-            </Link>
-            <Link to="/dashboard" className="text-sm text-gray-600 hover:text-primary">
-              Go to Dashboard
-            </Link>
-          </div>
-        </div>
       </div>
 
       {/* Main Content */}
@@ -79,15 +77,20 @@ const AppLayout = () => {
         )}
       >
         <header className="bg-white border-b">
-          <div className="flex items-center h-16 px-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setSidebarOpen(true)}
-              className={cn("lg:hidden", sidebarOpen && "hidden")}
-            >
-              <Menu className="h-6 w-6" />
-            </Button>
+          <div className="flex items-center justify-between h-16 px-4">
+            <div className="flex items-center gap-4">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setSidebarOpen(true)}
+                className={cn("lg:hidden", sidebarOpen && "hidden")}
+              >
+                <Menu className="h-6 w-6" />
+              </Button>
+              <h1 className="text-xl font-semibold">
+                {getPageTitle(location.pathname)}
+              </h1>
+            </div>
           </div>
         </header>
         <main className="p-6">
