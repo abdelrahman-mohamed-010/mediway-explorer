@@ -1,7 +1,6 @@
-
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, Activity, Calendar, Map, Stethoscope, Heart, ChartLineUp, Bell, ArrowUpRight } from "lucide-react";
+import { ArrowRight, Activity, Calendar, Map, Stethoscope, Heart, ChartLine, Bell, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
@@ -185,7 +184,7 @@ const features = [
     name: "Progress Analysis",
     description:
       "View detailed analytics and trends of your liver health metrics over time.",
-    icon: ChartLineUp,
+    icon: ChartLine,
   },
 ];
 
