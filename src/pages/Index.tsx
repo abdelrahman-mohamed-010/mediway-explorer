@@ -30,7 +30,7 @@ const Index = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
-              <span className="text-xl font-bold text-primary">LiverCare</span>
+              <span className="text-xl font-bold text-primary">withyou</span>
             </div>
             <div className="hidden md:flex items-center justify-between flex-1 ml-10">
               <div className="flex items-baseline space-x-4">
@@ -159,10 +159,7 @@ const Index = () => {
             >
               <h1 className="text-5xl  w-full font-bold tracking-tight text-gray-900 sm:text-6xl lg:text-7xl mb-8">
                 Monitor Your{" "}
-                  <span className="relative z-10 text-primary">
-                    Liver Health
-                  </span>
-                
+                <span className="relative z-10 text-primary">Liver Health</span>
               </h1>
               <p className="mt-6 text-xl text-gray-600">
                 Take control of your liver health with our AI-powered monitoring
@@ -255,7 +252,7 @@ const Index = () => {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              How LiverCare Works
+              How withyou Works
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Simple steps to better liver health monitoring
@@ -382,7 +379,7 @@ const Index = () => {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Why Choose LiverCare?
+              Why Choose withyou?
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               We're dedicated to making liver health monitoring accessible,
@@ -410,7 +407,7 @@ const Index = () => {
           </div>
           <div className="mt-8 md:order-1 md:mt-0">
             <p className="text-center text-xs leading-5 text-gray-600">
-              &copy; {new Date().getFullYear()} LiverCare. All rights reserved.
+              &copy; {new Date().getFullYear()} withyou. All rights reserved.
             </p>
           </div>
         </div>
@@ -431,13 +428,13 @@ const testimonials = [
     name: "Sarah Johnson",
     title: "Patient",
     content:
-      "LiverCare has completely transformed how I manage my liver health. The insights are invaluable.",
+      "withyou has completely transformed how I manage my liver health. The insights are invaluable.",
   },
   {
     name: "Dr. Michael Chen",
     title: "Hepatologist",
     content:
-      "As a liver specialist, I'm impressed by the comprehensive monitoring tools LiverCare provides to my patients.",
+      "As a liver specialist, I'm impressed by the comprehensive monitoring tools withyou provides to my patients.",
   },
   {
     name: "Emily Rodriguez",
@@ -449,9 +446,9 @@ const testimonials = [
 
 const faqs = [
   {
-    question: "How does LiverCare help monitor liver health?",
+    question: "How does withyou help monitor liver health?",
     answer:
-      "LiverCare provides comprehensive tracking tools, personalized insights, and direct access to liver specialists. Our platform allows you to log important health metrics, track symptoms, and receive tailored recommendations for better liver health management.",
+      "withyou provides comprehensive tracking tools, personalized insights, and direct access to liver specialists. Our platform allows you to log important health metrics, track symptoms, and receive tailored recommendations for better liver health management.",
   },
   {
     question: "Is my medical data secure?",
@@ -461,7 +458,7 @@ const faqs = [
   {
     question: "Can I share my health data with my doctor?",
     answer:
-      "Absolutely! LiverCare makes it easy to share your health data with your healthcare providers. You can generate detailed reports and securely share them with your medical team.",
+      "Absolutely! withyou makes it easy to share your health data with your healthcare providers. You can generate detailed reports and securely share them with your medical team.",
   },
   {
     question: "How often should I update my health metrics?",

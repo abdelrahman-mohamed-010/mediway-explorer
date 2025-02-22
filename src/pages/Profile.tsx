@@ -1,19 +1,43 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { User, Mail, Phone, MapPin, Calendar, Edit2 } from "lucide-react";
+import { User, Mail, Phone, MapPin, Activity, User2, Edit2 } from "lucide-react";
 import { useState, useRef } from "react";
+
+const FAKE_USER = {
+  email: "yossefehab@gmail.com",
+  password: "1234",
+  avatar: "https://i.pravatar.cc/100?u=zz",
+  name: "yossef",
+  age: "56",
+  Gender: "male",
+  medHistory: {
+    Epigastric_pain: "",
+    Jaundice: "",
+    bone_ache: "",
+    Diarrhea: "",
+    Headache: "",
+    Nausea: "",
+    Fever: "",
+  },
+  previousSubmits: {
+    package: {
+      submitImg: "",
+      report: "",
+    },
+  },
+};
 
 const Profile = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
-    name: "John Doe",
-    email: "john.doe@example.com",
-    phone: "+1 234 567 890",
-    address: "123 Health Street, Medical City",
-    joinDate: "January 2024",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=John",
+    name: FAKE_USER.name,
+    email: FAKE_USER.email,
+    age: FAKE_USER.age,
+    Gender: FAKE_USER.Gender,
+    avatar: FAKE_USER.avatar,
+    medHistory: FAKE_USER.medHistory,
   });
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,23 +68,23 @@ const Profile = () => {
       {icon}
       <div className="flex justify-between items-center w-full">
         <span className="text-sm font-medium text-gray-500">{label}</span>
-        {isEditing ? (
+        {isEditing && typeof formData[field] === "string" ? (
           <Input
-            value={formData[field]}
+            value={formData[field] as string}
             onChange={(e) =>
               setFormData({ ...formData, [field]: e.target.value })
             }
             className="max-w-[250px]"
           />
         ) : (
-          <span className="text-sm">{formData[field]}</span>
+          <span className="text-sm">{formData[field] as string}</span>
         )}
       </div>
     </div>
   );
 
   return (
-    <div className=" mx-auto">
+    <div className="mx-auto">
       <Card className="p-6">
         <div className="flex flex-col md:flex-row gap-8">
           {/* Profile Image */}
@@ -116,39 +140,65 @@ const Profile = () => {
                 "email"
               )}
               {renderField(
-                <Phone className="w-5 h-5 text-primary flex-shrink-0" />,
-                "Phone",
-                "phone"
+                <Activity className="w-5 h-5 text-primary flex-shrink-0" />,
+                "Age",
+                "age"
               )}
               {renderField(
-                <MapPin className="w-5 h-5 text-primary flex-shrink-0" />,
-                "Address",
-                "address"
-              )}
-              {renderField(
-                <Calendar className="w-5 h-5 text-primary flex-shrink-0" />,
-                "Member Since",
-                "joinDate"
+                <User2 className="w-5 h-5 text-primary flex-shrink-0" />,
+                "Gender",
+                "Gender"
               )}
             </div>
           </div>
         </div>
       </Card>
 
-      {/* Health Records Section */}
+      {/* Medical History Section */}
       <Card className="mt-8 p-6">
-        <h2 className="text-2xl font-bold mb-6">Health Records</h2>
+        <h2 className="text-2xl font-bold mb-6">Medical History</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {Object.entries(formData.medHistory).map(([condition, value]) => (
+            <div
+              key={condition}
+              className="flex items-center justify-between p-4 border rounded"
+            >
+              <span className="text-sm font-medium">
+                {condition.replace(/_/g, " ")}
+              </span>
+              <Input
+                value={value}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    medHistory: {
+                      ...formData.medHistory,
+                      [condition]: e.target.value,
+                    },
+                  })
+                }
+                disabled={!isEditing}
+                className="max-w-[200px]"
+              />
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      {/* Previous Submissions */}
+      <Card className="mt-8 p-6">
+        <h2 className="text-2xl font-bold mb-6">Previous Submissions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Button variant="outline" className="h-24 flex flex-col gap-2">
-            <span className="text-lg">Medical History</span>
+            <span className="text-lg">View Reports</span>
             <span className="text-sm text-gray-500">
-              View your medical records
+              Access your previous reports
             </span>
           </Button>
           <Button variant="outline" className="h-24 flex flex-col gap-2">
-            <span className="text-lg">Test Results</span>
+            <span className="text-lg">Submitted Images</span>
             <span className="text-sm text-gray-500">
-              Access your test results
+              View your submitted images
             </span>
           </Button>
         </div>
