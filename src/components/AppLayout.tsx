@@ -8,6 +8,7 @@ import {
   Heart,
   Home,
   User,
+  MapPin,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
@@ -30,11 +31,12 @@ const AppLayout = () => {
     { icon: Activity, label: "Health Tracking", path: "/health-tracking" },
     { icon: Calendar, label: "Calendar", path: "/calendar" },
     { icon: Heart, label: "Wellness Tips", path: "/wellness" },
+    { icon: MapPin, label: "Nearby Doctors", path: "/nearby-doctors" },
     { icon: User, label: "Profile", path: "/profile" },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 ">
       {/* Sidebar */}
       <div
         className={cn(
@@ -64,7 +66,7 @@ const AppLayout = () => {
                   "flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-lg transition-colors",
                   "hover:bg-gray-100 hover:text-primary",
                   isActive ? "bg-primary/10 text-primary" : "text-gray-600"
-                )}
+                )} 
               >
                 <item.icon
                   className={cn("h-5 w-5", isActive && "text-primary")}

@@ -11,6 +11,7 @@ import AppLayout from "./components/AppLayout";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 import CalendarPage from "./pages/Calendar";
+import NearbyDoctors from "./pages/NearbyDoctors";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/wellness" element={<div>Wellness Tips</div>} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/calendar" element={<CalendarPage />} />
+            <Route path="/nearby-doctors" element={<NearbyDoctors />} />
           </Route>
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
