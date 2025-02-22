@@ -1,14 +1,11 @@
+
 import { useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import {
-  Activity,
   Calendar,
-  Menu,
-  X,
-  Heart,
-  Home,
+  Map,
   User,
-  MapPin,
+  ChartLine,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
@@ -16,6 +13,13 @@ import { cn } from "@/lib/utils";
 const AppLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const location = useLocation();
+
+  const menuItems = [
+    { icon: User, label: "Profile", path: "/profile" },
+    { icon: Map, label: "Map", path: "/map" },
+    { icon: Calendar, label: "Calendar", path: "/calendar" },
+    { icon: ChartLine, label: "Stats", path: "/stats" },
+  ];
 
   const getPageTitle = (path: string) => {
     if (path === "/") return "Home";
@@ -26,17 +30,8 @@ const AppLayout = () => {
       .join(" ");
   };
 
-  const menuItems = [
-    { icon: Home, label: "Home", path: "/appointment" },
-    { icon: Activity, label: "Health Tracking", path: "/health-tracking" },
-    { icon: Calendar, label: "Calendar", path: "/calendar" },
-    { icon: Heart, label: "Wellness Tips", path: "/wellness" },
-    { icon: MapPin, label: "Nearby Doctors", path: "/nearby-doctors" },
-    { icon: User, label: "Profile", path: "/profile" },
-  ];
-
   return (
-    <div className="min-h-screen bg-gray-100 ">
+    <div className="min-h-screen bg-gray-100">
       {/* Sidebar */}
       <div
         className={cn(
@@ -45,14 +40,27 @@ const AppLayout = () => {
         )}
       >
         <div className="flex items-center justify-between h-16 px-4 border-b">
-          <span className="text-xl font-bold text-primary">LiverCare</span>
+          <span className="text-xl font-bold text-primary">WithYou</span>
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setSidebarOpen(false)}
             className="lg:hidden"
           >
-            <X className="h-6 w-6" />
+            <span className="sr-only">Close sidebar</span>
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
           </Button>
         </div>
         <nav className="p-4 space-y-1">
@@ -66,11 +74,9 @@ const AppLayout = () => {
                   "flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-lg transition-colors",
                   "hover:bg-gray-100 hover:text-primary",
                   isActive ? "bg-primary/10 text-primary" : "text-gray-600"
-                )} 
+                )}
               >
-                <item.icon
-                  className={cn("h-5 w-5", isActive && "text-primary")}
-                />
+                <item.icon className={cn("h-5 w-5", isActive && "text-primary")} />
                 <span>{item.label}</span>
               </Link>
             );
@@ -94,7 +100,19 @@ const AppLayout = () => {
                 onClick={() => setSidebarOpen(true)}
                 className={cn("lg:hidden", sidebarOpen && "hidden")}
               >
-                <Menu className="h-6 w-6" />
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
               </Button>
               <h1 className="text-xl font-semibold">
                 {getPageTitle(location.pathname)}

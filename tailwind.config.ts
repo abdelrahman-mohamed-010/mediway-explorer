@@ -26,20 +26,8 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#16A34A",
+          DEFAULT: "#0EA5E9",
           foreground: "#FFFFFF",
-        },
-        sage: {
-          50: "#E8F3E8",
-          100: "#D1E7D1",
-          200: "#A3CFA3",
-          300: "#75B775",
-          400: "#479F47",
-          500: "#16A34A",
-          600: "#158C3F",
-          700: "#126E31",
-          800: "#0E5023",
-          900: "#0A3215",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
